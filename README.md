@@ -1,6 +1,6 @@
 Atividade FitLife Unidade 4
 
-Autor: Luciano Schuck Vaiksnoras
+Autor: Luciano Schuck
 
 Features
 
