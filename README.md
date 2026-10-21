@@ -28,10 +28,15 @@ java -cp src Main
 
 Estrutura do Projeto
 src/
+
 ├── Main.java
+
 ├── Aluno.java
+
 ├── Plano.java
+
 ├── Matricula.java
+
 └── Relatorios.java
 
 
