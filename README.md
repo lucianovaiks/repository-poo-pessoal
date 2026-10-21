@@ -25,14 +25,18 @@ Features
 Execução
 
 Requisitos
-Java JDK 21 (ou superior)
-VS Code (ou outra IDE compatível com Java)
+
+- Java JDK 21 (ou superior)
+
+- VS Code (ou outra IDE compatível com Java)
 
 Compilar
-javac src/*.java
+
+- javac src/*.java
 
 Executar
-java -cp src Main
+
+- java -cp src Main
 
 Estrutura do Projeto
 src/
