@@ -2,25 +2,27 @@ Atividade FitLife Unidade 4
 
 Autor: Luciano Schuck
 
-Features
+## Funcionalidades
 
-- Cadastro e listagem de alunos.
+- Cadastro, edição e listagem de alunos.
 
-- Cadastro e listagem de planos.
-
-- Realização de matrículas.
-
-- Cancelamento de matrículas.
-
-- Edição de alunos.
-
-- Edição de planos.
+- Cadastro, edição e listagem de planos.
 
 - Ativação e desativação de planos.
 
-- Relatórios de alunos, planos e matrículas.
+- Realização e cancelamento de matrículas.
 
-- Armazenamento temporário dos dados em memória durante a execução do programa.
+- Cadastro e listagem de treinos.
+
+- Simulação de pagamento de mensalidade.
+
+- Relatórios de alunos, planos, matrículas, alunos por plano e total de alunos.
+
+- Validação de dados e tratamento de exceções.
+
+- Encapsulamento, associação e colaboração entre objetos.
+
+> O pagamento é uma simulação didática, sem integração com sistemas bancários. Os dados são armazenados apenas em memória e são perdidos ao encerrar o programa.
 
 Execução
 
@@ -30,17 +32,20 @@ Requisitos
 
 - VS Code (ou outra IDE compatível com Java)
 
-Compilar
+Compile o projeto:
 
-- javac src/*.java
+```bash
+javac *.java
+```
 
-Executar
+Execute o programa:
 
-- java -cp src Main
+```bash
+java Main
+```
 
 Estrutura do Projeto
 src/
-
 ├── Main.java
 
 ├── Aluno.java
@@ -49,23 +54,23 @@ src/
 
 ├── Matricula.java
 
-└── Relatorios.java
+├── Relatorios.java
+
+├── Treino.java
+
+└── Pagamento.java
 
 
-Conceitos demonstrados
+## Conceitos demonstrados
 
-- Classes e objetos: Aluno, Plano, Matricula e Relatorios.
+- **Classes e objetos:** `Aluno`, `Plano`, `Matricula`, `Treino`, `Pagamento` e `Relatorios`.
 
-- Encapsulamento: utilização de atributos privados com métodos getters e setters.
+- **Encapsulamento:** atributos privados com utilização de getters e setters.
 
-- Abstração: separação das responsabilidades entre as classes do sistema.
+- **Validação:** tratamento de entradas inválidas com `try/catch` e verificações de valores.
 
-- Associação: uma matrícula associa um aluno a um plano.
+- **Associação:** `Matricula` associa um aluno a um plano.
 
-- Colaboração entre objetos: as classes trabalham em conjunto para realizar o cadastro, gerenciamento e consulta das informações.
+- **Colaboração:** as classes trabalham em conjunto para realizar matrículas, gerar relatórios, cadastrar treinos e processar pagamentos.
 
-- Coleções: utilização de ArrayList para armazenar alunos, planos e matrículas.
-
-- Estruturas de decisão e repetição: uso de switch, if/else, for e do-while.
-
-- Programação Orientada a Objetos: organização do sistema em classes independentes, promovendo reutilização e manutenção do código.
+- **Coleções:** utilização de `ArrayList` para armazenar os dados do sistema.
