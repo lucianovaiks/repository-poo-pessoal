@@ -22,9 +22,9 @@ Autor: Luciano Schuck
 
 - Encapsulamento, associação e colaboração entre objetos.
 
-> O pagamento é uma simulação didática, sem integração com sistemas bancários. Os dados são armazenados apenas em memória e são perdidos ao encerrar o programa.
+O pagamento é uma simulação didática, sem integração com sistemas bancários. Os dados são armazenados apenas em memória e são perdidos ao encerrar o programa.
 
-Execução
+## Execução
 
 Requisitos
 
