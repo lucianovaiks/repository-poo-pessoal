@@ -84,8 +84,26 @@ public class Relatorios {
     // Total de alunos
     public void totalAlunos(ArrayList<Aluno> alunos) {
 
-        System.out.println("\n=== TOTAL DE ALUNOS ===");
-        System.out.println("Quantidade de alunos cadastrados: "
-                + alunos.size());
-    }
+    System.out.println("\n=== TOTAL DE ALUNOS ===");
+    System.out.println("Quantidade de alunos cadastrados: "
+            + alunos.size());
+}
+
+    public void listarTreinos(ArrayList<Treino> treinos) {
+
+        System.out.println("\n=== TREINOS ===");
+
+        if (treinos.isEmpty()) {
+
+            System.out.println("Nenhum treino cadastrado.");
+            return;
+        }
+
+        for (Treino treino : treinos) {
+
+            System.out.println("Aluno: " + treino.getAluno().getNome());
+            System.out.println("Treino: " + treino.getDescricao());
+            System.out.println("------------------------------");
+        }
+}
 }

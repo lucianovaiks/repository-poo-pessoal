@@ -10,6 +10,8 @@ public class Main {
         ArrayList<Aluno> alunos = new ArrayList<>();
         ArrayList<Plano> planos = new ArrayList<>();
         ArrayList<Matricula> matriculas = new ArrayList<>();
+        ArrayList<Treino> treinos = new ArrayList<>();
+        Pagamento pagamento = new Pagamento();
 
         Relatorios relatorio = new Relatorios();
 
@@ -31,12 +33,26 @@ public class Main {
             System.out.println("9 - Mostrar matrículas");
             System.out.println("10 - Cancelar matrícula");
             System.out.println("11 - Relatórios");
+            System.out.println("12 - Cadastrar treino");
+            System.out.println("13 - Mostrar treinos");
+            System.out.println("14 - Processar pagamento");
             System.out.println("0 - Sair");
 
             System.out.print("\nEscolha uma opção: ");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            try {
+
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+
+            } catch (Exception e) {
+
+                System.out.println("Erro: digite apenas números para escolher uma opção.");
+
+                scanner.nextLine(); // Limpa a entrada inválida
+
+                opcao = -1; // Valor inválido para cair no default do switch
+            }
 
             switch (opcao) {
                 
@@ -50,9 +66,29 @@ public class Main {
                     System.out.print("CPF: ");
                     String cpf = scanner.nextLine();
                     
-                    System.out.print("Idade: ");
-                    int idade = scanner.nextInt();
-                    scanner.nextLine();
+                    int idade;
+
+                    while (true) {
+
+                        try {
+
+                            System.out.print("Idade: ");
+                            idade = scanner.nextInt();
+                            scanner.nextLine();
+                            if (idade <= 0) {
+
+                                System.out.println("A idade deve ser maior que zero.");
+                                continue;
+                            }
+
+                            break;
+
+                        } catch (Exception e) {
+
+                            System.out.println("Idade inválida. Digite apenas números.");
+                            scanner.nextLine();
+                        }
+                    }
 
                     System.out.print("Telefone: ");
                     String telefone = scanner.nextLine();
@@ -72,12 +108,55 @@ public class Main {
                     System.out.print("Nome do plano: ");
                     String nomePlano = scanner.nextLine();
 
-                    System.out.print("Valor do plano: ");
-                    double valor = scanner.nextDouble();
+                    double valor;
 
-                    System.out.print("Duração (meses): ");
-                    int duracao = scanner.nextInt();
-                    scanner.nextLine();
+                    while (true) {
+
+                        try {
+
+                            System.out.print("Valor do plano: ");
+                            valor = scanner.nextDouble();
+                            scanner.nextLine();
+
+                            if (valor <= 0) {
+
+                                System.out.println("O valor deve ser maior que zero.");
+                                continue;
+                            }
+
+                            break;
+
+                        } catch (Exception e) {
+
+                            System.out.println("Digite um valor válido.");
+                            scanner.nextLine();
+                        }
+                    }
+
+                    int duracao;
+
+                    while (true) {
+
+                        try {
+
+                            System.out.print("Duração (meses): ");
+                            duracao = scanner.nextInt();
+                            scanner.nextLine();
+
+                            if (duracao <= 0) {
+
+                                System.out.println("A duração deve ser maior que zero.");
+                                continue;
+                            }
+
+                            break;
+
+                        } catch (Exception e) {
+
+                            System.out.println("Digite apenas números.");
+                            scanner.nextLine();
+                        }
+                    }
 
                     Plano plano = new Plano(nomePlano, valor, duracao);
 
@@ -182,9 +261,31 @@ public class Main {
                         System.out.print("Novo CPF: ");
                         alunos.get(indice).setCpf(scanner.nextLine());
 
-                        System.out.print("Nova idade: ");
-                        alunos.get(indice).setIdade(scanner.nextInt());
-                        scanner.nextLine();
+                        int novaIdade;
+
+                        while (true) {
+
+                            try {
+
+                                System.out.print("Nova idade: ");
+                                novaIdade = scanner.nextInt();
+                                scanner.nextLine();
+
+                                if (novaIdade <= 0) {
+
+                                    System.out.println("A idade deve ser maior que zero.");
+                                    continue;
+                                }
+
+                                alunos.get(indice).setIdade(novaIdade);
+                                break;
+
+                            } catch (Exception e) {
+
+                                System.out.println("Digite apenas números.");
+                                scanner.nextLine();
+                            }
+                        }
 
                         System.out.print("Novo telefone: ");
                         alunos.get(indice).setTelefone(scanner.nextLine());
@@ -221,12 +322,58 @@ public class Main {
                         System.out.print("Novo nome do plano: ");
                         planos.get(indicePlanoEditar).setNome(scanner.nextLine());
 
-                        System.out.print("Novo valor: ");
-                        planos.get(indicePlanoEditar).setValor(scanner.nextDouble());
+                        double novoValor;
 
-                        System.out.print("Nova duração (meses): ");
-                        planos.get(indicePlanoEditar).setDuracao(scanner.nextInt());
-                        scanner.nextLine();
+                        while (true) {
+
+                            try {
+
+                                System.out.print("Novo valor: ");
+                                novoValor = scanner.nextDouble();
+                                scanner.nextLine();
+
+                                if (novoValor <= 0) {
+
+                                    System.out.println("O valor deve ser maior que zero.");
+                                    continue;
+                                }
+
+                                planos.get(indicePlanoEditar).setValor(novoValor);
+                                break;
+
+                            } catch (Exception e) {
+
+                                System.out.println("Digite um valor válido.");
+                                scanner.nextLine();
+                            }
+                        }       
+
+                        int novaDuracao;
+
+                        while (true) {
+
+                            try {
+
+                                System.out.print("Nova duração (meses): ");
+                                novaDuracao = scanner.nextInt();
+                                scanner.nextLine();
+
+                                if (novaDuracao <= 0) {
+
+                                    System.out.println("A duração deve ser maior que zero.");
+                                    continue;
+                                }
+
+                                planos.get(indicePlanoEditar).setDuracao(novaDuracao);
+                                break;
+
+                            } catch (Exception e) {
+
+                                System.out.println("Digite apenas números.");
+                                scanner.nextLine();
+                            }
+                        }
+                
 
                         System.out.println("\nPlano atualizado com sucesso!");
 
@@ -354,8 +501,19 @@ public class Main {
                         System.out.println("0 - Voltar");
 
                         System.out.print("Escolha uma opção: ");
-                        opcaoRelatorio = scanner.nextInt();
-                        scanner.nextLine();
+
+                        try {
+
+                            opcaoRelatorio = scanner.nextInt();
+                            scanner.nextLine();
+
+                        } catch (Exception e) {
+
+                            System.out.println("Digite apenas números.");
+
+                            scanner.nextLine();
+                            opcaoRelatorio = -1;
+                        }
 
                         switch (opcaoRelatorio) {
 
@@ -388,6 +546,84 @@ public class Main {
                         }
 
                     } while (opcaoRelatorio != 0);
+
+                    break;
+
+                case 12:
+
+                    if (alunos.isEmpty()) {
+
+                        System.out.println("Nenhum aluno cadastrado.");
+                        break;
+                    }
+
+                    System.out.println("\n=== CADASTRAR TREINO ===");
+
+                    for (int i = 0; i < alunos.size(); i++) {
+
+                        System.out.println((i + 1) + " - " + alunos.get(i).getNome());
+                    }
+
+                    System.out.print("Escolha o aluno: ");
+                    int indiceTreino = scanner.nextInt() - 1;
+                    scanner.nextLine();
+
+                    if (indiceTreino >= 0 && indiceTreino < alunos.size()) {
+
+                        System.out.print("Descrição do treino: ");
+                        String descricao = scanner.nextLine();
+
+                        Treino treino = new Treino(alunos.get(indiceTreino), descricao);
+
+                        treinos.add(treino);
+
+                        System.out.println("Treino cadastrado com sucesso!");
+
+                    } else {
+
+                        System.out.println("Aluno não encontrado.");
+                    }
+
+                    break;
+
+                case 13:
+
+                    relatorio.listarTreinos(treinos);
+
+                    break;
+
+                case 14:
+
+                    if (matriculas.isEmpty()) {
+
+                        System.out.println("Nenhuma matrícula cadastrada.");
+                        break;
+                    }
+
+                    System.out.println("\n=== PROCESSAR PAGAMENTO ===");
+
+                    for (int i = 0; i < matriculas.size(); i++) {
+
+                        System.out.println((i + 1) + " - "
+                                + matriculas.get(i).getAluno().getNome()
+                                + " - "
+                                + matriculas.get(i).getPlano().getNome());
+                    }
+
+                    System.out.print("Escolha a matrícula: ");
+                    int indicePagamento = scanner.nextInt() - 1;
+                    scanner.nextLine();
+
+                    if (indicePagamento >= 0 && indicePagamento < matriculas.size()) {
+
+                       pagamento.pagar(
+                                matriculas.get(indicePagamento).getAluno(),
+                                matriculas.get(indicePagamento).getPlano());
+
+                    } else {
+
+                        System.out.println("Matrícula não encontrada.");
+                    }
 
                     break;
 
